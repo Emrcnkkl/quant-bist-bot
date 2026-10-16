@@ -1,0 +1,28 @@
+name: BIST Quant Bot
+
+on:
+  schedule:
+    # Hafta içi her gün (1-5) UTC saatiyle 15:15'te (Türkiye saatiyle 18:15) çalışır
+    - cron: '15 15 * * 1-5'
+  workflow_dispatch: # Manuel tetikleme butonu
+
+jobs:
+  tarama-yap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Kopyala
+        uses: actions/checkout@v3
+        
+      - name: Python Kurulumu
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Kütüphaneleri Yükle
+        run: pip install yfinance pandas numpy requests
+          
+      - name: Botu Çalıştır
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python quant_bot.py
