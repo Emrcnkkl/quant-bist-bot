@@ -3,7 +3,7 @@ name: BIST Quant Bot
 on:
   schedule:
     # Hafta içi her gün (1-5) UTC saatiyle 15:15'te (Türkiye saatiyle 18:15) çalışır
-    - cron: '45 6 * * 1-5'
+    - cron: '50 6 * * 1-5'
   workflow_dispatch: # Manuel tetikleme butonu
 
 jobs:
