@@ -1019,11 +1019,11 @@ with open("signals.json", "w", encoding="utf-8") as f:
 
         setInterval(updateTopBarClock, 1000);
         updateTopBarClock();
+        buildCalendar(); // Eğer takvim fonksiyonu varsa
         
-        // Önce canlı JSON verisini çekmeyi dene, yoksa varsayılanı çalıştır
-        loadLiveSignals().then(() => {
-            renderTable();
-            initSimulator();
+        // Sayfa açıldığında güvenle yükle
+        loadLiveSignals();
+
     </script>
 </body>
 </html>
