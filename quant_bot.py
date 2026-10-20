@@ -146,17 +146,21 @@ requests.post(url, json=payload)
 
 
 
-
 import json
 
-# Botun o sabah taradığı ve hesapladığı bst30 sonuçlarını 
-# web sitesinin okuyacağı formatta bir liste olarak hazırlıyoruz:
-gunluk_sonuclar = [
-    {"hisse": "KONTR.IS", "algo": "SuperTrend", "ayar": "Periyot: 14, Çarpan: 2.0", "stop": "%5", "signal": "TUT", "opt": 70.46, "bh": -95.19},
-    {"hisse": "SISE.IS", "algo": "RSI", "ayar": "Periyot: 10", "stop": "%8", "signal": "AL", "opt": 97.76, "bh": 0.22},
-    # ... diğer hisseler de bu formatta eklenecek ...
-]
+# Botun o sabah taradığı güncel sonuçları web sitesi için JSON formatına çeviriyoruz
+signals_data = []
+for hisse in bist30_tarananlar:  # (Buradaki döngü senin botundaki veri yapısına göre şekillenir)
+    signals_data.append({
+        "hisse": hisse["kod"],
+        "algo": hisse["strateji"],
+        "ayar": hisse["parametreler"],
+        "stop": hisse["stop_orani"],
+        "signal": hisse["gunluk_sinyal"],
+        "opt": hisse["bot_getirisi"],
+        "bh": hisse["buy_hold"]
+    })
 
-# Sonuçları depoya signals.json olarak kaydediyoruz
+# Dosyayı depoya kaydediyoruz (GitHub Actions bunu otomatik commit edecek)
 with open("signals.json", "w", encoding="utf-8") as f:
-    json.dump(gunluk_sonuclar, f, ensure_ascii=False, indent=2)
+    json.dump(signals_data, f, ensure_ascii=False, indent=2)
