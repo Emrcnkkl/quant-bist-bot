@@ -144,23 +144,3 @@ url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 payload = {"chat_id": TELEGRAM_CHAT_ID, "text": mesaj, "parse_mode": "HTML"}
 requests.post(url, json=payload)
 
-
-
-import json
-
-# Botun o sabah taradığı güncel sonuçları web sitesi için JSON formatına çeviriyoruz
-signals_data = []
-for hisse in bist30_tarananlar:  # (Buradaki döngü senin botundaki veri yapısına göre şekillenir)
-    signals_data.append({
-        "hisse": hisse["kod"],
-        "algo": hisse["strateji"],
-        "ayar": hisse["parametreler"],
-        "stop": hisse["stop_orani"],
-        "signal": hisse["gunluk_sinyal"],
-        "opt": hisse["bot_getirisi"],
-        "bh": hisse["buy_hold"]
-    })
-
-# Dosyayı depoya kaydediyoruz (GitHub Actions bunu otomatik commit edecek)
-with open("signals.json", "w", encoding="utf-8") as f:
-    json.dump(signals_data, f, ensure_ascii=False, indent=2)
