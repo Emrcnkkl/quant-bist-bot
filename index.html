@@ -10,17 +10,17 @@
     
     <style>
         :root {
-            --bg-body: #f4f6f9;          /* Ferah, açık finansal gri/mavi zemin */
-            --bg-card: #ffffff;          /* Temiz beyaz kartlar */
-            --bg-subtle: #f8fafc;        /* Tablo satır ve input zemini */
-            --text-main: #0f172a;        /* Kurumsal koyu lacivert/antrasit ana metin */
-            --text-secondary: #475569;   /* Orta gri açıklama metni */
-            --text-muted: #94a3b8;       /* Yardımcı soluk metin */
-            --border-color: #e2e8f0;     /* İnce kompakt sınır çizgileri */
-            --primary: #059669;          /* Finansal zümrüt yeşili (Ana vurgu) */
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --primary: #059669;
             --primary-hover: #047857;
             --primary-light: #ecfdf5;
-            --navy-accent: #1e293b;      /* Kurumsal koyu arduvaz */
+            --navy-accent: #1e293b;
             --buy-green: #16a34a;
             --buy-bg: #dcfce7;
             --sell-red: #dc2626;
@@ -29,26 +29,19 @@
             --hold-bg: #f1f5f9;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 14px;
             line-height: 1.5;
             min-height: 100vh;
         }
 
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* 1. ÜST FİNANSAL DURUM ÇUBUĞU (TOP TICKER BAR) */
         .top-bar {
             background-color: var(--navy-accent);
             color: #e2e8f0;
@@ -67,12 +60,7 @@
             gap: 0.75rem;
         }
 
-        .status-items {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
+        .status-items { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 
         .status-pill {
             display: inline-flex;
@@ -84,18 +72,11 @@
             font-weight: 500;
         }
 
-        .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
+        .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
         .dot-green { background-color: #22c55e; box-shadow: 0 0 6px #22c55e; }
         .dot-red { background-color: #ef4444; }
         .dot-amber { background-color: #f59e0b; }
 
-        /* 2. KOMPAKT ANA NAVİGASYON */
         header {
             background-color: var(--bg-card);
             border-bottom: 1px solid var(--border-color);
@@ -116,472 +97,172 @@
             gap: 1rem;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-            color: var(--text-main);
-        }
-
+        .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text-main); }
         .brand-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            width: 32px; height: 32px; border-radius: 6px;
             background: linear-gradient(135deg, var(--primary), #0d9488);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 15px;
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px;
         }
-
-        .brand-text {
-            font-weight: 700;
-            font-size: 1.15rem;
-            letter-spacing: -0.3px;
-        }
-
+        .brand-text { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.3px; }
         .brand-badge {
-            font-size: 11px;
-            font-weight: 600;
-            background-color: var(--primary-light);
-            color: var(--primary);
-            padding: 0.15rem 0.45rem;
-            border-radius: 4px;
-            border: 1px solid #a7f3d0;
+            font-size: 11px; font-weight: 600; background-color: var(--primary-light);
+            color: var(--primary); padding: 0.15rem 0.45rem; border-radius: 4px; border: 1px solid #a7f3d0;
         }
 
         .nav-tabs {
-            display: flex;
-            gap: 0.35rem;
-            background-color: var(--bg-body);
-            padding: 0.25rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            display: flex; gap: 0.35rem; background-color: var(--bg-body);
+            padding: 0.25rem; border-radius: 8px; border: 1px solid var(--border-color);
         }
 
         .tab-btn {
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 0.45rem 0.95rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.15s ease;
+            border: none; background: transparent; color: var(--text-secondary);
+            font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+            padding: 0.45rem 0.95rem; border-radius: 6px; cursor: pointer; transition: all 0.15s ease;
         }
-
-        .tab-btn:hover {
-            color: var(--text-main);
-        }
-
-        .tab-btn.active {
-            background-color: var(--bg-card);
-            color: var(--primary);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
-        }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { background-color: var(--bg-card); color: var(--primary); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); }
 
         .btn-telegram {
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: background 0.15s ease;
+            background-color: var(--primary); color: white; text-decoration: none;
+            font-size: 13px; font-weight: 600; padding: 0.5rem 1rem; border-radius: 6px;
+            display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.15s ease;
         }
+        .btn-telegram:hover { background-color: var(--primary-hover); }
 
-        .btn-telegram:hover {
-            background-color: var(--primary-hover);
-        }
+        main { max-width: 1240px; margin: 0 auto; padding: 1.5rem; }
 
-        /* ANA KONTEYNER */
-        main {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 1.5rem;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; animation: fadeIn 0.2s ease; }
+        .tab-content.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 3. KOMPAKT KPI ÖZET KARTLARI */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-        }
-
-        @media (max-width: 950px) {
-            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 550px) {
-            .kpi-grid { grid-template-columns: 1fr; }
-        }
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+        @media (max-width: 950px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 550px) { .kpi-grid { grid-template-columns: 1fr; } }
 
         .kpi-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem 1.2rem;
-            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 1rem 1.2rem; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
         }
-
         .kpi-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-bottom: 0.35rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 12px; font-weight: 600; color: var(--text-secondary);
+            text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 0.35rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
+        .kpi-value { font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; }
+        .kpi-sub { font-size: 12px; color: var(--text-secondary); margin-top: 0.25rem; }
 
-        .kpi-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-
-        .kpi-sub {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        /* 4. SİMÜLATÖR VE HIZLI FİLTRE PANELİ */
-        .dashboard-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
+        .dashboard-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
 
         .sim-banner {
             background: linear-gradient(to right, #ffffff, #f0fdf4);
-            border: 1px solid #bbf7d0;
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            border: 1px solid #bbf7d0; border-left: 4px solid var(--primary);
+            border-radius: 8px; padding: 1rem 1.25rem; display: flex;
+            justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
         }
-
-        .sim-inputs {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        .input-group label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-        }
+        .sim-inputs { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .input-group { display: flex; flex-direction: column; gap: 0.2rem; }
+        .input-group label { font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; }
 
         .compact-input, .compact-select {
-            padding: 0.45rem 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: var(--bg-card);
-            color: var(--text-main);
-            font-size: 13px;
-            font-weight: 500;
-            outline: none;
-            transition: border-color 0.15s;
+            padding: 0.45rem 0.75rem; border: 1px solid var(--border-color);
+            border-radius: 6px; background-color: var(--bg-card); color: var(--text-main);
+            font-size: 13px; font-weight: 500; outline: none; transition: border-color 0.15s;
         }
+        .compact-input:focus, .compact-select:focus { border-color: var(--primary); }
 
-        .compact-input:focus, .compact-select:focus {
-            border-color: var(--primary);
-        }
+        .sim-outputs { display: flex; align-items: center; gap: 1.75rem; flex-wrap: wrap; }
+        .sim-stat span { display: block; font-size: 11px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; }
+        .sim-stat strong { font-size: 1.2rem; font-weight: 700; }
 
-        .sim-outputs {
-            display: flex;
-            align-items: center;
-            gap: 1.75rem;
-            flex-wrap: wrap;
-        }
-
-        .sim-stat span {
-            display: block;
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .sim-stat strong {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* 5. TABLO KONTROL ÇUBUĞU */
         .table-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
         }
-
         .table-toolbar {
-            padding: 0.9rem 1.2rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            background-color: var(--bg-subtle);
+            padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+            gap: 0.75rem; background-color: var(--bg-subtle);
         }
-
-        .filter-pills {
-            display: flex;
-            gap: 0.35rem;
-            flex-wrap: wrap;
-        }
-
+        .filter-pills { display: flex; gap: 0.35rem; flex-wrap: wrap; }
         .pill-btn {
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-            color: var(--text-secondary);
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.15s;
+            border: 1px solid var(--border-color); background-color: var(--bg-card);
+            color: var(--text-secondary); font-size: 12px; font-weight: 600;
+            padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; transition: all 0.15s;
         }
+        .pill-btn:hover { border-color: #cbd5e1; color: var(--text-main); }
+        .pill-btn.active { background-color: var(--navy-accent); color: white; border-color: var(--navy-accent); }
 
-        .pill-btn:hover {
-            border-color: #cbd5e1;
-            color: var(--text-main);
-        }
+        .toolbar-right { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+        .table-container { overflow-x: auto; }
 
-        .pill-btn.active {
-            background-color: var(--navy-accent);
-            color: white;
-            border-color: var(--navy-accent);
-        }
-
-        .toolbar-right {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* 6. KOMPAKT FİNANSAL VERİ TABLOSU */
-        .table-container {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 13px;
-        }
-
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
         th {
-            background-color: var(--bg-subtle);
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            white-space: nowrap;
+            background-color: var(--bg-subtle); color: var(--text-secondary);
+            font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px;
+            padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-color); white-space: nowrap;
         }
+        td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; white-space: nowrap; }
+        tbody tr:hover { background-color: #f8fafc; }
 
-        td {
-            padding: 0.65rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-
-        tbody tr:hover {
-            background-color: #f8fafc;
-        }
-
-        .ticker-cell {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .ticker-symbol {
-            font-weight: 700;
-            color: var(--text-main);
-            font-size: 13.5px;
-        }
+        .ticker-cell { display: flex; align-items: center; gap: 0.5rem; }
+        .ticker-symbol { font-weight: 700; color: var(--text-main); font-size: 13.5px; }
 
         .badge-signal {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.2rem 0.55rem;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            min-width: 48px;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.2rem 0.55rem; border-radius: 4px; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.3px; min-width: 48px;
         }
-
         .sig-al { background-color: var(--buy-bg); color: var(--buy-green); }
         .sig-sat { background-color: var(--sell-bg); color: var(--sell-red); }
         .sig-tut { background-color: var(--hold-bg); color: var(--hold-slate); }
 
         .badge-algo {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            font-size: 11.5px;
-            font-weight: 600;
+            background-color: var(--bg-body); color: var(--text-main);
+            border: 1px solid var(--border-color); padding: 0.15rem 0.5rem;
+            border-radius: 4px; font-size: 11.5px; font-weight: 600;
         }
 
         .pos-val { color: var(--buy-green); font-weight: 600; }
         .neg-val { color: var(--sell-red); font-weight: 600; }
 
-        /* 7. MİMARİ VE TELEGRAM BÜLTENİ SEKME STİLLERİ */
-        .arch-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
+        .arch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        @media (max-width: 768px) { .arch-grid { grid-template-columns: 1fr; } }
 
-        @media (max-width: 768px) {
-            .arch-grid { grid-template-columns: 1fr; }
-        }
-
-        .arch-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-
-        .arch-header {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.6rem;
-        }
-
+        .arch-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; }
+        .arch-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
         .step-num {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 12px;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            border: 1px solid #a7f3d0;
+            background-color: var(--primary-light); color: var(--primary); font-weight: 700;
+            font-size: 12px; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid #a7f3d0;
         }
-
-        .arch-card h3 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .arch-card p {
-            color: var(--text-secondary);
-            font-size: 13.5px;
-            line-height: 1.55;
-        }
-
-        .code-preview {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            padding: 1.2rem;
-            border-radius: 8px;
-            font-size: 12.5px;
-            overflow-x: auto;
-            line-height: 1.6;
-        }
+        .arch-card h3 { font-size: 15px; font-weight: 700; color: var(--text-main); }
+        .arch-card p { color: var(--text-secondary); font-size: 13.5px; line-height: 1.55; }
 
         .tg-preview-box {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 1.5rem;
-            align-items: start;
+            background-color: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 1.25rem; display: grid; grid-template-columns: 1.1fr 1fr;
+            gap: 1.5rem; align-items: start;
         }
-
-        @media (max-width: 850px) {
-            .tg-preview-box { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 850px) { .tg-preview-box { grid-template-columns: 1fr; } }
 
         .tg-message {
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-left: 4px solid #0284c7;
-            border-radius: 6px;
-            padding: 1rem;
-            font-size: 13px;
-            line-height: 1.6;
+            background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #0284c7;
+            border-radius: 6px; padding: 1rem; font-size: 13px; line-height: 1.6;
         }
 
         footer {
-            max-width: 1240px;
-            margin: 2rem auto 1rem;
-            padding: 1rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 12px;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            max-width: 1240px; margin: 2rem auto 1rem; padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color); display: flex; justify-content: space-between;
+            color: var(--text-muted); font-size: 12px; flex-wrap: wrap; gap: 0.5rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. ÜST DURUM ÇUBUĞU (CANLI SAAT, SEANS VE REJİM FİLTRESİ) -->
     <div class="top-bar">
         <div class="top-bar-inner">
             <div class="status-items">
@@ -589,21 +270,15 @@
                     <span class="dot dot-green" id="market-dot"></span>
                     <span id="market-status-text">BİST100 Kontrol Ediliyor...</span>
                 </span>
-                <span class="status-pill">
-                    🛡️ Rejim Filtresi (XU100 &gt; SMA200): <strong style="color: #4ade80;">BOĞA (AKTİF)</strong>
-                </span>
-                <span class="status-pill">
-                    📉 Z-Score Kriz Radarı (&lt; -2.0σ): <strong style="color: #cbd5e1;">NORMAL</strong>
-                </span>
+                <span class="status-pill">🛡️ Rejim Filtresi: <strong style="color: #4ade80;">BOĞA (AKTİF)</strong></span>
             </div>
             <div class="status-items mono">
                 <span>🤖 GitHub Actions: <strong>Hafta İçi 09:45</strong></span>
-                <span>🕒 İST: <strong id="live-clock">--:--:--</strong> (<span id="live-date">--</span>)</span>
+                <span>🕒 İST: <strong id="live-clock">--:--:--</strong></span>
             </div>
         </div>
     </div>
 
-    <!-- 2. KOMPAKT ANA BAŞLIK VE SEKMELER -->
     <header>
         <nav>
             <a href="#" class="brand" onclick="switchTab('dashboard', document.getElementById('tab-dash'))">
@@ -627,53 +302,34 @@
     </header>
 
     <main>
-        <!-- SEKME 1: SİNYAL TERMİNALİ & SİMÜLATÖR -->
         <section id="dashboard" class="tab-content active">
-            
-            <!-- KPI Özet Kartları -->
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-title">
-                        <span>Taranan Evren</span>
-                        <span class="mono" style="color: var(--primary);">XU030</span>
-                    </div>
+                    <div class="kpi-title"><span>Taranan Evren</span><span class="mono" style="color: var(--primary);">XU030</span></div>
                     <div class="kpi-value mono">30 Hisse</div>
                     <div class="kpi-sub">RSI, MACD ve SuperTrend Grid Search</div>
                 </div>
-
                 <div class="kpi-card">
-                    <div class="kpi-title">
-                        <span>Ort. Algoritma Getirisi</span>
-                        <span style="color: var(--buy-green);">▲ Alfa</span>
-                    </div>
-                    <div class="kpi-value mono" style="color: var(--buy-green);" id="kpi-avg-bot">+76.94%</div>
-                    <div class="kpi-sub">Buy & Hold Ortalaması: <strong class="mono" id="kpi-avg-bh">+46.43%</strong></div>
+                    <div class="kpi-title"><span>Ort. Algoritma Getirisi</span><span style="color: var(--buy-green);">▲ Alfa</span></div>
+                    <div class="kpi-value mono" style="color: var(--buy-green);">+76.94%</div>
+                    <div class="kpi-sub">Buy & Hold Ortalaması: <strong class="mono">+46.43%</strong></div>
                 </div>
-
                 <div class="kpi-card">
-                    <div class="kpi-title">
-                        <span>Buy & Hold'u Yenen</span>
-                        <span class="mono">Başarı Oranı</span>
-                    </div>
+                    <div class="kpi-title"><span>Buy & Hold'u Yenen</span><span class="mono">Başarı Oranı</span></div>
                     <div class="kpi-value mono">24 / 30 <span style="font-size: 14px; color: var(--primary);">(%80)</span></div>
-                    <div class="kpi-sub">İzleyen Stop (%5 - %8 - %12) Korumalı</div>
+                    <div class="kpi-sub">İzleyen Stop Korumalı</div>
                 </div>
-
                 <div class="kpi-card">
-                    <div class="kpi-title">
-                        <span>Güncel Sinyal Dağılımı</span>
-                        <span class="mono">09:45 Bülteni</span>
-                    </div>
+                    <div class="kpi-title"><span>Güncel Sinyal Dağılımı</span><span class="mono">09:45 Bülteni</span></div>
                     <div class="kpi-value mono" style="font-size: 1.25rem; display: flex; gap: 0.75rem; margin-top: 0.2rem;">
-                        <span style="color: var(--buy-green);" id="count-al">12 AL</span>
-                        <span style="color: var(--hold-slate);" id="count-tut">13 TUT</span>
-                        <span style="color: var(--sell-red);" id="count-sat">5 SAT</span>
+                        <span style="color: var(--buy-green);">12 AL</span>
+                        <span style="color: var(--hold-slate);">13 TUT</span>
+                        <span style="color: var(--sell-red);">5 SAT</span>
                     </div>
                     <div class="kpi-sub">Otonom günlük sinyal matrisi</div>
                 </div>
             </div>
 
-            <!-- İnteraktif Sermaye & Backtest Simülatörü -->
             <div class="dashboard-row">
                 <div class="sim-banner">
                     <div class="sim-inputs">
@@ -690,25 +346,14 @@
                             <div id="sim-rule-badge" class="compact-input mono" style="background: var(--bg-subtle); color: var(--text-secondary);">-</div>
                         </div>
                     </div>
-
                     <div class="sim-outputs">
-                        <div class="sim-stat">
-                            <span>QuantAI Bot Bakiyesi</span>
-                            <strong class="mono" style="color: var(--buy-green);" id="sim-res-bot">-</strong>
-                        </div>
-                        <div class="sim-stat">
-                            <span>Al & Bekle (Buy & Hold)</span>
-                            <strong class="mono" style="color: var(--text-main);" id="sim-res-bh">-</strong>
-                        </div>
-                        <div class="sim-stat">
-                            <span>Algoritma Net Farkı (Alfa)</span>
-                            <strong class="mono" id="sim-res-diff">-</strong>
-                        </div>
+                        <div class="sim-stat"><span>QuantAI Bot Bakiyesi</span><strong class="mono" style="color: var(--buy-green);" id="sim-res-bot">-</strong></div>
+                        <div class="sim-stat"><span>Al & Bekle (Buy & Hold)</span><strong class="mono" style="color: var(--text-main);" id="sim-res-bh">-</strong></div>
+                        <div class="sim-stat"><span>Algoritma Net Farkı (Alfa)</span><strong class="mono" id="sim-res-diff">-</strong></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Ana BİST30 Tablosu -->
             <div class="table-card">
                 <div class="table-toolbar">
                     <div class="filter-pills">
@@ -717,9 +362,8 @@
                         <button class="pill-btn" onclick="setSignalFilter('TUT', this)">⚪ Sadece TUT</button>
                         <button class="pill-btn" onclick="setSignalFilter('SAT', this)">🔴 Sadece SAT</button>
                     </div>
-
                     <div class="toolbar-right">
-                        <input type="text" id="search-box" class="compact-input" placeholder="Hisse kodu ara (THYAO, SISE)..." oninput="renderTable()">
+                        <input type="text" id="search-box" class="compact-input" placeholder="Hisse kodu ara..." oninput="renderTable()">
                         <select id="strategy-filter" class="compact-select" onchange="renderTable()">
                             <option value="ALL">Tüm Algoritmalar</option>
                             <option value="RSI">RSI Şampiyonları</option>
@@ -733,7 +377,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="table-container">
                     <table>
                         <thead>
@@ -741,7 +384,7 @@
                                 <th>Hisse Kodu</th>
                                 <th>Günlük Sinyal</th>
                                 <th>Şampiyon Algoritma</th>
-                                <th>Optimum Parametre (Grid Search)</th>
+                                <th>Optimum Parametre</th>
                                 <th>İzleyen Stop</th>
                                 <th>Bot Getirisi</th>
                                 <th>Buy & Hold</th>
@@ -754,119 +397,39 @@
             </div>
         </section>
 
-        <!-- SEKME 2: ALGORİTMA MİMARİSİ (CMPE & FİNANS YOL HARİTASI ÖZETİ) -->
         <section id="architecture" class="tab-content">
             <div class="arch-grid">
                 <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="step-num mono">KATMAN 01</span>
-                        <h3>Piyasa Rejimi Filtresi (XU100 SMA200)</h3>
-                    </div>
-                    <p>
-                        Bireysel hisse sinyallerinden önce makro trend kontrol edilir. Borsa İstanbul <strong>XU100</strong> endeksi kendi 200 günlük basit hareketli ortalamasının (SMA200) altındaysa sistem <em>"Ayı Piyasası"</em> ilan eder ve yeni AL sinyallerini bloke ederek sermayeyi nakitte (PPF/Mevduat) korur.
-                    </p>
+                    <div class="arch-header"><span class="step-num mono">KATMAN 01</span><h3>Piyasa Rejimi Filtresi</h3></div>
+                    <p>BİST100 endeksi 200 günlük hareketli ortalamanın altındaysa sistem ayı piyasası ilan ederek yeni AL sinyallerini bloke eder.</p>
                 </div>
-
                 <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="step-num mono">KATMAN 02</span>
-                        <h3>Grid Search Meta-Algoritma Motoru</h3>
-                    </div>
-                    <p>
-                        Borsada her hissenin volatilite karakteri farklıdır. Örneğin yatay-dalgalı hisselerde <code>RSI (7, 10, 14)</code> daha yüksek başarı verirken, güçlü trend hisselerinde <code>MACD (8/21, 12/26)</code> veya <code>SuperTrend (10/3.0, 14/2.0)</code> öne çıkar. Sistem her hissenin son 2 yıllık verisini tarayarak en kârlı şifreyi otonom atar.
-                    </p>
-                </div>
-
-                <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="step-num mono">KATMAN 03</span>
-                        <h3>Dinamik İzleyen Stop (Trailing Stop)</h3>
-                    </div>
-                    <p>
-                        Klasik indikatörler rallilerde erken sattırabilir veya tepeden dönüşlerde kârı geri verebilir. QuantAI, pozisyona girdikten sonra gördüğü zirve fiyatı hafızada tutar ve hissenin oynaklığına göre optimize edilmiş <code>%5</code>, <code>%8</code> veya <code>%12</code> izleyen stop mesafesiyle kârı kilitler.
-                    </p>
-                </div>
-
-                <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="step-num mono">KATMAN 04</span>
-                        <h3>Z-Score Kriz ve Dip Avcısı</h3>
-                    </div>
-                    <p>
-                        Sert likidite şoklarında ve panik satışlarında standart indikatörler gecikir. Hisse fiyatı kendi 20 günlük ortalamasından <strong>2 standart sapmadan fazla ($Z &lt; -2.0$)</strong> aşağı saptığında istatistiksel aşırı satım (Mean Reversion) sinyali üretilerek dip fırsatları yakalanır.
-                    </p>
+                    <div class="arch-header"><span class="step-num mono">KATMAN 02</span><h3>Grid Search Motoru</h3></div>
+                    <p>Her hissenin tarihsel verisine en uygun indikatör ve periyodu iteratif olarak belirler.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SEKME 3: OTOMASYON & TELEGRAM HATTI -->
         <section id="telegram" class="tab-content">
             <div class="tg-preview-box">
                 <div>
-                    <h3 style="font-size: 16px; margin-bottom: 0.5rem;">Bulut Otomasyonu (GitHub Actions &rarr; Telegram API)</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                        <code>quant_bot.py</code> her sabah hafta içi <strong>09:37 / 09:45 (GMT+3)</strong> saatinde GitHub sunucularında otomatik uyanır, Yahoo Finance üzerinden BİST30 kapanış ve açılış öncesi verilerini çeker ve Telegram kanalına aşağıdaki formatta rapor geçer.
-                    </p>
+                    <h3 style="font-size: 16px; margin-bottom: 0.5rem;">Bulut Otomasyonu</h3>
                     <div class="tg-message mono">
                         <strong>📊 QUANT-AI BİST30 SABAH BÜLTENİ</strong><br>
                         📅 Tarih: 20.10.2026 | 🕒 09:45<br>
-                        🛡️ Piyasa Rejimi: <strong>BOĞA (XU100 &gt; SMA200)</strong><br><br>
-                        🟢 <strong>GÜNLÜK AL SİNYALLERİ:</strong><br>
-                        • <strong>THYAO</strong> | Strateji: RSI(10) | İzleyen Stop: %5<br>
-                        • <strong>YKBNK</strong> | Strateji: RSI(14) | İzleyen Stop: %8<br>
-                        • <strong>BIMAS</strong> | Strateji: RSI(7) | İzleyen Stop: %12<br><br>
-                        🔴 <strong>İZLEYEN STOP / SAT UYARILARI:</strong><br>
-                        • <strong>SASA</strong> | SuperTrend(10, 3.0) Kırılımı<br>
-                        • <strong>PGSUS</strong> | %8 Trailing Stop Tetiklendi
+                        🛡️ Piyasa Rejimi: <strong>BOĞA</strong>
                     </div>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 16px; margin-bottom: 0.5rem;">Canlı JSON Veri Köprüsü (Sonraki Adım)</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
-                        <code>quant_bot.py</code> dosyasının sonuna eklenecek 4 satırlık JSON çıktısı ile bu web sitesi her sabah hiçbir müdahale olmadan tabloyu otomatik günceller:
-                    </p>
-                    <pre class="code-preview mono"># quant_bot.py sonuna eklenecek veri köprüsü:
-import json
-
-with open("signals.json", "w", encoding="utf-8") as f:
-    json.dump(gunluk_sonuclar, f, ensure_ascii=False, indent=2)
-# GitHub Actions bu dosyayı commit ettiğinde
-# web sitesi güncel sinyalleri anında çeker.</pre>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div><strong>QuantAI BİST30</strong> • Otonom Kantitatif Analiz ve Sinyal Mimarisi</div>
-        <div class="mono">Grid Search • SMA200 Regime • Trailing Stop • Z-Score</div>
+        <div><strong>QuantAI BİST30</strong> • Otonom Kantitatif Analiz</div>
+        <div class="mono">Grid Search • SMA200 • Trailing Stop</div>
     </footer>
 
     <script>
-            // Canlı JSON Veri Köprüsünü Okuma Fonksiyonu
-        // Canlı JSON Veri Köprüsünü Güvenli Okuma Fonksiyonu
-        async function loadLiveSignals() {
-            try {
-                const response = await fetch('signals.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data && data.length > 0) {
-                        bist30Data.length = 0;
-                        bist30Data.push(...data);
-                    }
-                }
-            } catch (error) {
-                console.log("Canlı JSON okunamadı, dahili verilerle devam ediliyor.");
-            } finally {
-                // Her durumda (hata olsa da olmasa da) tabloyu ve simülatörü çalıştır
-                renderTable();
-                initSimulator();
-            }
-        }
-
-
-        // BİST30 Gerçek Optimizasyon ve Sinyal Veri Seti
         const bist30Data = [
             {"hisse":"KONTR.IS","algo":"SuperTrend","ayar":"Periyot: 14, Çarpan: 2.0","stop":"%5","signal":"TUT","opt":70.46,"bh":-95.19},
             {"hisse":"SISE.IS","algo":"RSI","ayar":"Periyot: 10","stop":"%8","signal":"AL","opt":97.76,"bh":0.22},
@@ -921,6 +484,7 @@ with open("signals.json", "w", encoding="utf-8") as f:
             const strat = document.getElementById('strategy-filter').value;
             const sortBy = document.getElementById('sort-by').value;
             const tbody = document.getElementById('bist-tbody');
+            if (!tbody) return;
             tbody.innerHTML = '';
 
             let filtered = bist30Data.filter(item => {
@@ -948,11 +512,7 @@ with open("signals.json", "w", encoding="utf-8") as f:
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>
-                        <div class="ticker-cell">
-                            <span class="ticker-symbol mono">${ticker}</span>
-                        </div>
-                    </td>
+                    <td><div class="ticker-cell"><span class="ticker-symbol mono">${ticker}</span></div></td>
                     <td><span class="badge-signal ${sigClass} mono">${item.signal}</span></td>
                     <td><span class="badge-algo">${item.algo}</span></td>
                     <td class="mono" style="color: var(--text-secondary); font-size: 12px;">${item.ayar}</td>
@@ -967,6 +527,8 @@ with open("signals.json", "w", encoding="utf-8") as f:
 
         function initSimulator() {
             const select = document.getElementById('sim-ticker');
+            if (!select) return;
+            select.innerHTML = '';
             bist30Data.forEach((item, idx) => {
                 const opt = document.createElement('option');
                 opt.value = idx;
@@ -977,9 +539,12 @@ with open("signals.json", "w", encoding="utf-8") as f:
         }
 
         function runSimulation() {
-            const idx = document.getElementById('sim-ticker').value;
+            const select = document.getElementById('sim-ticker');
+            if (!select) return;
+            const idx = select.value;
             const capital = parseFloat(document.getElementById('sim-capital').value) || 10000;
             const item = bist30Data[idx];
+            if (!item) return;
 
             const botFinal = Math.round(capital * (1 + item.opt / 100));
             const bhFinal = Math.round(capital * (1 + item.bh / 100));
@@ -994,36 +559,16 @@ with open("signals.json", "w", encoding="utf-8") as f:
             diffEl.style.color = diffTL >= 0 ? 'var(--buy-green)' : 'var(--sell-red)';
         }
 
-        function updateTopBarClock() {
+        function updateClock() {
             const now = new Date();
-            document.getElementById('live-clock').textContent = now.toTimeString().split(' ')[0];
-            document.getElementById('live-date').textContent = now.toLocaleDateString('tr-TR', { day: '2-digit', month: 'short' });
-
-            const day = now.getDay();
-            const mins = now.getHours() * 60 + now.getMinutes();
-            const dot = document.getElementById('market-dot');
-            const text = document.getElementById('market-status-text');
-
-            const isWeekday = (day >= 1 && day <= 5);
-            if (isWeekday && mins >= 575 && mins < 600) {
-                dot.className = 'dot dot-amber';
-                text.textContent = 'BİST100: AÇILIŞ ÖNCESİ BOT TARAMASI';
-            } else if (isWeekday && mins >= 600 && mins <= 1085) {
-                dot.className = 'dot dot-green';
-                text.textContent = 'BİST100: SEANS AÇIK (10:00 - 18:05)';
-            } else {
-                dot.className = 'dot dot-red';
-                text.textContent = 'BİST100: SEANS KAPALI';
-            }
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) clockEl.textContent = now.toTimeString().split(' ')[0];
         }
 
-        setInterval(updateTopBarClock, 1000);
-        updateTopBarClock();
-        buildCalendar(); // Eğer takvim fonksiyonu varsa
-        
-        // Sayfa açıldığında güvenle yükle
-        loadLiveSignals();
-
+        setInterval(updateClock, 1000);
+        updateClock();
+        renderTable();
+        initSimulator();
     </script>
 </body>
 </html>
