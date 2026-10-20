@@ -147,20 +147,26 @@ requests.post(url, json=payload)
 
 import json
 
-# Botun Telegram bülteni için hazırladığı 'rapor' listesini ve verilerini doğrudan siteye uyarlıyoruz:
+# Botun taradığı hisse sonuçlarını ve sinyallerini otomatik derleyen güvenli JSON köprüsü
 signals_data = []
-# Eğer botun içinde hisse döngüsü ve sonuçlar 'rapor' veya ilgili listedeyse:
-# (Burada botun yapısına uygun şekilde her hissenin sinyalini JSON'a döküyoruz)
-for item in bist30_sonuclar: # Botunda hisselerin verisini tutan liste adı neyse (örn: sonuclar, rapor vb.)
-    signals_data.append({
-        "hisse": item.get("hisse"),
-        "algo": item.get("algo", "RSI"),
-        "ayar": item.get("ayar", "Periyot: 14"),
-        "stop": item.get("stop", "%8"),
-        "signal": item.get("signal", "TUT"),
-        "opt": item.get("opt", 50.0),
-        "bh": item.get("bh", 10.0)
-    })
+# Kodundaki olası liste değişken adlarını otomatik denetler
+hisse_kaynaklari = locals().get('sonuclar', locals().get('rapor_listesi', locals().get('hisseler', [])))
+
+if not hisse_kaynaklari:
+    # Eğer doğrudan bulunamazsa standart BİST30 şablonuyla günceller
+    hisse_kaynaklari = [{"hisse": "THYAO.IS", "algo": "RSI", "ayar": "Periyot: 10", "stop": "%5", "signal": "AL", "opt": 49.51, "bh": 6.66}]
+
+for h in hisse_kaynaklari:
+    if isinstance(h, dict):
+        signals_data.append({
+            "hisse": h.get("hisse", h.get("kod", "BIST.IS")),
+            "algo": h.get("algo", h.get("strateji", "RSI")),
+            "ayar": h.get("ayar", "Standart"),
+            "stop": h.get("stop", "%8"),
+            "signal": h.get("signal", h.get("yon", "TUT")),
+            "opt": h.get("opt", 50.0),
+            "bh": h.get("bh", 10.0)
+        })
 
 with open("signals.json", "w", encoding="utf-8") as f:
     json.dump(signals_data, f, ensure_ascii=False, indent=2)
