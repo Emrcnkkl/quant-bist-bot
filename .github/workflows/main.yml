@@ -31,4 +31,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Otonom Sinyal Güncellemesi: signals.json"
-          file_patterns: signals.json
+          file_pattern: signals.json
