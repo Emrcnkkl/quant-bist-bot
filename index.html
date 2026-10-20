@@ -845,23 +845,26 @@ with open("signals.json", "w", encoding="utf-8") as f:
 
     <script>
             // Canlı JSON Veri Köprüsünü Okuma Fonksiyonu
+        // Canlı JSON Veri Köprüsünü Güvenli Okuma Fonksiyonu
         async function loadLiveSignals() {
             try {
                 const response = await fetch('signals.json');
                 if (response.ok) {
                     const data = await response.json();
                     if (data && data.length > 0) {
-                        bist30Data.length = 0; // Eski statik veriyi temizle
-                        bist30Data.push(...data); // Botun getirdiği taze veriyi yükle
-                        renderTable();
-                        initSimulator();
-                        console.log("Canlı JSON sinyalleri başarıyla yüklendi.");
+                        bist30Data.length = 0;
+                        bist30Data.push(...data);
                     }
                 }
             } catch (error) {
-                console.log("signals.json bulunamadı, varsayılan optimizasyon verileri kullanılıyor.");
+                console.log("Canlı JSON okunamadı, dahili verilerle devam ediliyor.");
+            } finally {
+                // Her durumda (hata olsa da olmasa da) tabloyu ve simülatörü çalıştır
+                renderTable();
+                initSimulator();
             }
         }
+
 
         // BİST30 Gerçek Optimizasyon ve Sinyal Veri Seti
         const bist30Data = [
