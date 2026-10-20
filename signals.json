@@ -1,0 +1,20 @@
+[
+  {
+    "hisse": "KONTR.IS",
+    "algo": "SuperTrend",
+    "ayar": "Periyot: 14, Çarpan: 2.0",
+    "stop": "%5",
+    "signal": "TUT",
+    "opt": 70.46,
+    "bh": -95.19
+  },
+  {
+    "hisse": "SISE.IS",
+    "algo": "RSI",
+    "ayar": "Periyot: 10",
+    "stop": "%8",
+    "signal": "AL",
+    "opt": 97.76,
+    "bh": 0.22
+  }
+]
