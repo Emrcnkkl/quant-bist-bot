@@ -844,6 +844,25 @@ with open("signals.json", "w", encoding="utf-8") as f:
     </footer>
 
     <script>
+            // Canlı JSON Veri Köprüsünü Okuma Fonksiyonu
+        async function loadLiveSignals() {
+            try {
+                const response = await fetch('signals.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.length > 0) {
+                        bist30Data.length = 0; // Eski statik veriyi temizle
+                        bist30Data.push(...data); // Botun getirdiği taze veriyi yükle
+                        renderTable();
+                        initSimulator();
+                        console.log("Canlı JSON sinyalleri başarıyla yüklendi.");
+                    }
+                }
+            } catch (error) {
+                console.log("signals.json bulunamadı, varsayılan optimizasyon verileri kullanılıyor.");
+            }
+        }
+
         // BİST30 Gerçek Optimizasyon ve Sinyal Veri Seti
         const bist30Data = [
             {"hisse":"KONTR.IS","algo":"SuperTrend","ayar":"Periyot: 14, Çarpan: 2.0","stop":"%5","signal":"TUT","opt":70.46,"bh":-95.19},
@@ -997,8 +1016,11 @@ with open("signals.json", "w", encoding="utf-8") as f:
 
         setInterval(updateTopBarClock, 1000);
         updateTopBarClock();
-        renderTable();
-        initSimulator();
+        
+        // Önce canlı JSON verisini çekmeyi dene, yoksa varsayılanı çalıştır
+        loadLiveSignals().then(() => {
+            renderTable();
+            initSimulator();
     </script>
 </body>
 </html>
