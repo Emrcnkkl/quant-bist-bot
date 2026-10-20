@@ -26,3 +26,9 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python quant_bot.py
+
+      - name: Güncel Sinyalleri Depoya Kaydet (Git Commit)
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Otonom Sinyal Güncellemesi: signals.json"
+          file_patterns: signals.json
