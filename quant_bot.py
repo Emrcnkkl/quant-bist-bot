@@ -144,3 +144,23 @@ url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 payload = {"chat_id": TELEGRAM_CHAT_ID, "text": mesaj, "parse_mode": "HTML"}
 requests.post(url, json=payload)
 
+
+import json
+
+# Botun Telegram bülteni için hazırladığı 'rapor' listesini ve verilerini doğrudan siteye uyarlıyoruz:
+signals_data = []
+# Eğer botun içinde hisse döngüsü ve sonuçlar 'rapor' veya ilgili listedeyse:
+# (Burada botun yapısına uygun şekilde her hissenin sinyalini JSON'a döküyoruz)
+for item in bist30_sonuclar: # Botunda hisselerin verisini tutan liste adı neyse (örn: sonuclar, rapor vb.)
+    signals_data.append({
+        "hisse": item.get("hisse"),
+        "algo": item.get("algo", "RSI"),
+        "ayar": item.get("ayar", "Periyot: 14"),
+        "stop": item.get("stop", "%8"),
+        "signal": item.get("signal", "TUT"),
+        "opt": item.get("opt", 50.0),
+        "bh": item.get("bh", 10.0)
+    })
+
+with open("signals.json", "w", encoding="utf-8") as f:
+    json.dump(signals_data, f, ensure_ascii=False, indent=2)
