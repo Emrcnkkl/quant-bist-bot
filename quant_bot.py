@@ -143,3 +143,20 @@ else:
 url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 payload = {"chat_id": TELEGRAM_CHAT_ID, "text": mesaj, "parse_mode": "HTML"}
 requests.post(url, json=payload)
+
+
+
+
+import json
+
+# Botun o sabah taradığı ve hesapladığı bst30 sonuçlarını 
+# web sitesinin okuyacağı formatta bir liste olarak hazırlıyoruz:
+gunluk_sonuclar = [
+    {"hisse": "KONTR.IS", "algo": "SuperTrend", "ayar": "Periyot: 14, Çarpan: 2.0", "stop": "%5", "signal": "TUT", "opt": 70.46, "bh": -95.19},
+    {"hisse": "SISE.IS", "algo": "RSI", "ayar": "Periyot: 10", "stop": "%8", "signal": "AL", "opt": 97.76, "bh": 0.22},
+    # ... diğer hisseler de bu formatta eklenecek ...
+]
+
+# Sonuçları depoya signals.json olarak kaydediyoruz
+with open("signals.json", "w", encoding="utf-8") as f:
+    json.dump(gunluk_sonuclar, f, ensure_ascii=False, indent=2)
